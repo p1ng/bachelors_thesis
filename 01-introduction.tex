@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage
+\chapter{Introduction}
+\label{sec:introduction}
+
+
+\section{Motivation}
+\label{sec:introduction:motivation}
+
+As malware-assisted cybercrime continues to rise, the need for reliable tools and structured procedures to understand and mitigate malicious software grows accordingly. 
+Static code analysis plays a crucial role in this process: it enables analysts to examine the internal logic of a program without executing it, 
+making it a safe and effective first step in incident response and threat intelligence.
+
+However, static analysis tools differ significantly in their capabilities and design philosophies. Some are optimized for analyzing .NET or Java applications, 
+others originated as hexadecimal editors that evolved through community-driven development, and some were created by major intelligence agencies with 
+decades of reverse engineering expertise. Despite this diversity, these tools share a common characteristic: they are freely available and widely used, 
+yet their practical differences are often not systematically documented.
+
+This thesis is motivated by the need to clarify which tools are best suited for different analysis scenarios, enabling practitioners to make informed decisions 
+and ultimately improving the quality and efficiency of malware investigations.
+
+
+
+\section{Objectives and Approach}
+\label{sec:introduction:objectives}
+
+The primary objective of this thesis is to conduct a practice-oriented comparison of selected static analysis tools commonly used in reverse engineering and 
+malware investigation. Specifically, the tools Ghidra, Binary Ninja, Cutter, ILSpy, and Bytecode Viewer are evaluated with respect to their suitability for 
+analyzing benign and malicious software samples.
+
+To achieve this, each tool is examined according to several criteria: installation and configuration effort, usability, supported file formats, and the quality 
+of the generated disassembly or decompilation output. The evaluation includes both benign test programs written specifically for this work, allowing direct comparison 
+between source code and analysis output, and a real-world malware sample obtained from MalwareBazaar.
+
+All experiments are conducted in Debian 13 virtual machine using the VirualBox virtualization software. 
+This ensures reproducibility, isolation, and safe handling of malicious programs throughout the evaluation process.
+
+
+
+%\section{Outline}
+%\label{sec:introduction:outline}
+%
+%This thesis is structured as follows.
+%
+%Chapter 2 introduces the fundamental concepts of reverse engineering and static analysis that are relevant for understanding the tools evaluated in this work.
+%
+%Chapter 3 presents the selected analysis tools and explains the reasoning behind their inclusion in the thesis.
+%
+%Chapter 4 describes the evaluation criteria that are used to compare the tools.
+%
+%Chapter 5 outlines the methodology used during testing, including the setup of the analysis environment and the selection of samples.
+%
+%Chapter 6 contains the practical analysis of both benign and malicious samples and documents the observations made during testing.
+%
+%Chapter 7 provides a comparison of the results and highlights the strengths and weaknesses of each tool.
+%
+%%%Chapter 8 opens a discussion over what the study has brought to light.
+%
+%Finally, Chapter 8 concludes the thesis and summarizes the main findings, provides recommendations, and is followed by suggestions for future work.
+
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

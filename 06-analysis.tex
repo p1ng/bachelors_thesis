@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\chapter{Practical Analysis}
+\label{sec:analysis}
+
+
+\section{Ghidra}
+\label{sec:analysis:ghidra}
+
+\subsection{Installation and Setup}
+\label{subsec:analysis:ghidra:setup}
+Ghidra version 12.1.2 was obtained from the project's official GitHub releases page on 10 August 2026. The software was distributed as a ZIP archive 
+named \texttt{ghidra\_12.1.2\_PUBLIC\_20260605.zip}. No conventional installation procedure was required. After extracting the archive, Ghidra was started 
+using the included \texttt{ghidraRun} launcher. On the first launch, the Ghidra User Agreement was displayed and accepted.
+
+A compatible Java runtime is required to run Ghidra. Java 21 is recommended for this version, although Java 25 was already installed in the evaluation 
+environment and operated without problems. No administrative privileges or additional configuration were required. The application launched successfully 
+immediately after extraction, and the complete setup process took only a few minutes. Apart from the requirement for an existing Java runtime, the installation 
+process was straightforward.
+
+To verify the setup, a new Ghidra project was created and a harmless synthetic sample was imported by dragging the file into the project window. 
+The sample was then opened and analysed using the default analysis configuration, with all initially enabled analysis options retained. Import and automatic 
+analysis completed without errors. Overall, Ghidra provided a simple setup procedure consisting only of downloading and extracting the archive before launching 
+the application.
+
+\subsection{Analysis of the Synthetic C Sample}
+\label{subsec:analysis:ghidra:synthetic}
+
+\subsection{Analysis of the WannaCry Sample}
+\label{subsec:analysis:ghidra:wannacry}
+
+
+\section{Binary Ninja}
+\label{sec:analysis:binary-ninja}
+
+\subsection{Installation and Setup}
+\label{subsec:analysis:binary-ninja:setup}
+Binary Ninja Free version 5.3.9757-Stable was obtained from the official Binary Ninja website on 10 August 2026. This is the free edition of Binary Ninja, 
+rather than one of the commercially licensed versions. The Linux version was distributed as a ZIP archive named \path{binaryninja_free_linux.zip}. 
+As with Ghidra, no conventional installation procedure was necessary. After downloading and extracting the archive, the application was started using the 
+included \texttt{binaryninja} executable.
+
+No additional dependencies, administrative privileges, or configuration steps were required. Binary Ninja launched successfully on the first attempt. 
+During the initial launch, the application asked whether crash reports should be sent to the developers. It subsequently displayed its interface using a dark 
+theme by default. The complete setup process took only a few minutes, and no problems or confusing steps were encountered.
+
+The setup was verified by opening a harmless synthetic binary through the application's file-selection dialogue. The file was imported successfully without 
+requiring additional configuration. Overall, Binary Ninja Free provided a straightforward setup procedure consisting only of downloading and extracting the 
+archive before launching the included executable.
+
+\subsection{Analysis of the Synthetic C Sample}
+\label{subsec:analysis:binary-ninja:synthetic}
+
+\subsection{Analysis of the WannaCry Sample}
+\label{subsec:analysis:binary-ninja:wannacry}
+
+
+\section{Cutter}
+\label{sec:analysis:cutter}
+
+\subsection{Installation and Setup}
+\label{subsec:analysis:cutter:setup}
+Cutter version 2.5.0 was obtained through the project's official website on 10 August 2026. The Linux version was distributed as an AppImage named 
+\path{Cutter-v2.5.0-Linux-x86_64.AppImage}. After downloading the file, it was marked as executable and launched directly. No conventional installation procedure 
+was required.
+
+No additional dependencies, administrative privileges, or configuration steps were necessary. Cutter launched successfully on the first attempt. The initial 
+dialogue offered the option to use the operating system's theme, although the application subsequently opened with a light theme. Apart from this minor 
+inconsistency, no problems or confusing steps were encountered. The download itself accounted for most of the time required to make the application operational.
+
+The setup was verified by selecting and opening a harmless synthetic binary through the file-selection dialogue. Cutter recognized the file and presented a slider 
+for selecting the desired analysis level before starting the analysis. This provided a clear and convenient way to control the extent of the initial 
+automatic analysis.
+
+Overall, the AppImage format made the setup process particularly straightforward because the application could be launched as a self-contained executable 
+without installing additional packages. Although an AppImage may introduce a small amount of overhead during application startup or when initially 
+accessing compressed files, it does not involve emulation or virtualization. Its runtime performance is therefore generally comparable to that of a 
+conventionally installed native application.
+
+\subsection{Analysis of the Synthetic C Sample}
+\label{subsec:analysis:cutter:synthetic}
+
+\subsection{Analysis of the WannaCry Sample}
+\label{subsec:analysis:cutter:wannacry}
+
+\section{Bytecode Viewer}
+\label{sec:analysis:bytecode-viewer}
+
+\subsection{Installation and Setup}
+\label{subsec:analysis:bytecode-viewer:setup}
+Bytecode Viewer version 2.13.2 was obtained from the project's official GitHub releases page on 10 August 2026. The application was distributed as an executable JAR 
+file named \path{Bytecode-Viewer-2.13.2.jar}. No conventional installation procedure was required. After downloading the file, the application was launched using 
+the installed Java runtime:
+
+\begin{lstlisting}[language=bash]
+java -jar Bytecode-Viewer-2.13.2.jar
+\end{lstlisting}
+
+Apart from a compatible Java runtime, no additional dependencies were required. The application did not require administrative privileges or further configuration 
+and launched successfully on the first attempt. Consequently, the complete setup required little time or effort.
+
+The setup was verified by dragging the synthetic Java sample into the designated drop area of the application. Bytecode Viewer imported the JAR file successfully 
+and decompiled its contents within a short period of time.
+
+Bytecode Viewer was selected as a replacement for JD-GUI, which had initially been intended for the evaluation. During preliminary testing, JD-GUI repeatedly 
+produced internal errors when processing the valid synthetic sample. Compiling the sample for older Java target versions, including Java 17, Java 11, and Java 8, 
+did not resolve the problem. Bytecode Viewer successfully processed the sample without requiring it to be modified and provided a more actively maintained 
+alternative for the practical evaluation. Overall, its installation and initial setup were straightforward and presented no difficulties.
+
+\subsection{Analysis of the Synthetic Java Sample}
+\label{subsec:analysis:bytecode-viewer:synthetic}
+
+\section{ILSpy}
+\label{sec:analysis:ilspy}
+
+\subsection{Installation and Setup}
+\label{subsec:analysis:ilspy:setup}
+ILSpy version 11.0.0 was obtained from the project's official GitHub repository on 10 August 2026. The evaluated build was the release candidate distributed as the Debian package 
+\path{ilspy_11.0.0.9335.rc-1_amd64.deb}. The package was installed using APT:
+
+\begin{lstlisting}[language=bash]
+sudo apt install ./ilspy_11.0.0.9335.rc-1_amd64.deb
+\end{lstlisting}
+
+Unlike the portable archives and executable JAR files used by several other evaluated tools, ILSpy required a conventional system-wide installation and therefore administrative 
+privileges. The package targeted the AMD64 architecture and declared dependencies on several graphical and system libraries, including X11, ICE, SM, Fontconfig, ICU, and xdg-utils. 
+APT resolved the required dependencies during installation, and no additional manual configuration was necessary.
+
+The installation completed without errors, and ILSpy launched successfully afterward. The Debian package simplified integration into the Debian-based evaluation environment and 
+made the installation process straightforward. Only little time and effort were required.
+
+The setup was verified by importing the compiled .NET version of the synthetic sample. ILSpy recognized the managed assembly and successfully reconstructed its contents. 
+Initial navigation was somewhat less intuitive because the assembly tree contained numerous referenced framework assemblies, which made the relevant application class difficult to 
+locate at first. After expanding the appropriate nodes and selecting the \texttt{IbanValidator} class, the reconstructed source code could be accessed successfully. This 
+represented a minor learning curve in using the interface rather than an installation or decompilation problem.
+
+\subsection{Analysis of the Synthetic C\# Sample}
+\label{subsec:analysis:ilspy:synthetic}
+
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

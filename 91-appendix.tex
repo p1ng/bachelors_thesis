@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\appendix
+\chapter{Code Listings}
+\label{app:an-appendix}
+
+This appendix contains the complete source code of the three synthetic
+IBAN-validation samples used in the evaluation. The implementations use
+equivalent validation logic but are adapted to the conventions of their
+respective programming languages.
+
+\section{C Implementation}
+\lstinputlisting[
+    language=C,
+    caption={Source code of the synthetic C IBAN validator},
+    label={lst:iban-validator-c}
+]{code/iban_validator.c}
+
+\section{Java Implementation}
+\lstinputlisting[
+    language=Java,
+    caption={Source code of the synthetic Java IBAN validator},
+    label={lst:iban-validator-java}
+]{code/IbanValidator.java}
+
+\section{C\# Implementation}
+\lstinputlisting[
+    language={[Sharp]C},
+    caption={Source code of the synthetic C\# IBAN validator},
+    label={lst:iban-validator-csharp}
+]{code/IbanValidator.cs}
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\chapter{Background}
+\label{sec:background}
+
+
+\section{Fundamentals of Reverse Engineering}
+\label{sec:background:fundamentals}
+
+Reverse engineering aims to understand the internal behavior and structure of a program in the absence of its source code. 
+This can be achieved either by closely observing a program during execution or, as demonstrated in this thesis, by statically analyzing the compiled binary itself.
+
+In the case of compiled software, analysis begins with machine code, which represents the lowest level of abstraction. 
+This machine code can be translated into assembly instructions, making the program logic more accessible to human analysts, as directly interpreting 
+raw hexadecimal representations is impractical. Some analysis tools go a step further and attempt to reconstruct assembly instructions into higher-level source code, 
+typically resembling the C programming language. While this reconstructed code is rarely identical to the original source, it often provides a functional approximation 
+of the program's logic. The limitations of this process stem from compiler optimizations, which can significantly alter control flow and data structures, as well as 
+from the fact that not all programs are originally written in C.
+
+This thesis focuses on the static analysis of malware. In this context, reverse engineering is typically an expected and deliberately hindered activity. 
+Malware authors frequently employ techniques designed to obstruct analysis and conceal malicious behavior. These techniques include, but are not limited to, 
+control-flow obfuscation, encrypted execution stages, delayed payload execution, communication with remote command-and-control servers, and the use of executable packers. 
+These methods are addressed in more detail later in this work.
+
+Despite these challenges, understanding malware behavior is of critical importance. Identifying persistence mechanisms enables effective removal of infections, 
+while analyzing command-and-control communication is essential when investigating botnets. Furthermore, reconstructing payload logic supports incident response efforts 
+and can provide valuable insights for subsequent forensic investigations.
+
+Not all malware exists in the form of native binaries. Some malicious software is distributed as scripts, while others target virtual machines or intermediary languages. 
+Although this thesis primarily focuses on the analysis of compiled binaries, tools for analyzing Java and C\# programs are also included to account 
+for these common malware formats.
+
+\section{Static vs. Dynamic Analysis}
+\label{sec:background:staticVsDynamic}
+
+Dynamic analysis refers to the examination of malware by executing either parts of the program or the entire binary within a controlled environment. 
+During execution, the analyst observes the runtime behavior of the sample. Typical aspects of interest include file system interactions, created or modified processes, 
+registry changes, network communication, and other system level side effects. Specialized tools support this process by monitoring system calls, tracking file handles, 
+recording process activity, and capturing network traffic.
+
+In contrast, static analysis is performed without executing the program. Instead, the binary itself is examined directly. This may involve disassembly, decompilation, string analysis, 
+control flow reconstruction, and inspection of embedded resources. The goal is to understand the program's structure and logic solely through examination of its code and metadata.
+
+Both approaches have distinct advantages. Dynamic analysis can produce rapid and practical insights into malware behavior, particularly when dealing with heavily obfuscated or encrypted binaries, 
+since runtime execution naturally reveals decrypted payloads and unpacked code. Furthermore, observing network communication during execution often provides valuable intelligence regarding 
+command-and-control infrastructure and data exfiltration mechanisms.
+
+However, sophisticated malware frequently incorporates anti-analysis techniques designed to detect virtualized or sandboxed environments. Such context aware behavior may alter or suppress malicious 
+actions when analysis is suspected, thereby limiting the reliability of dynamic observations. Static analysis is not susceptible to this specific form of evasion, as no execution takes place. 
+Consequently, it provides a more controlled and deterministic perspective on the program's structure, although it may require significantly more effort when strong obfuscation techniques are employed.
+
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

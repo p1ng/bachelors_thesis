@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\chapter{Methodology}
+\label{sec:methodology}
+
+
+\section{Analysis Environment}
+\label{sec:methodology:installation}
+The analyses are conducted in a dedicated 64-bit virtual machine running Debian 13.6 with the Xfce desktop environment. The virtual machine is hosted on a 64-bit system using 
+Oracle VirtualBox version 7.2.8 and is allocated 4096 MB of memory and four virtual processor cores. Using the same virtualized environment for all evaluated tools 
+provides consistent operating-system and resource conditions, thereby reducing environmental differences that could influence the comparison.
+
+Network access is initially available to download and install the analysis tools from their official sources. Shared folders or other VirtualBox integration features may also be 
+enabled temporarily to transfer the required samples to the guest system. Once the tools and samples have been transferred, networking and all integration features that permit 
+communication between the host and guest systems are disabled. These features include shared folders, the shared clipboard, and drag and drop. A snapshot of the prepared and isolated 
+environment is then created, providing a consistent initial state and allowing the virtual machine to be restored if necessary.
+
+The samples are examined exclusively through static analysis and are never intentionally executed. Nevertheless, potentially harmful files remain confined to the virtual machine 
+while the analyses are performed. The virtualized environment and the disabled communication features reduce the risks associated with handling such files, although the virtual 
+machine is treated as a risk-reduction measure rather than an absolute security boundary.
+
+
+\section{Test Dataset}
+\label{sec:methodology:dataset}
+
+
+\subsection{Synthetic Samples}
+\label{sec:methodology:dataset:synthetic}
+Three synthetic samples are used in the evaluation. They consist of equivalent implementations of an IBAN validator written in C, Java, and C\#. 
+The samples perform the same principal operations: they normalize the supplied IBAN, verify its general format and country-specific length, and apply 
+the modulo-97 checksum defined for IBAN validation. The programs determine only whether an IBAN is structurally and mathematically valid.
+
+Using implementations of the same program reduces functional differences between the samples while allowing tools for native code, Java bytecode, 
+and .NET assemblies to be evaluated using comparable program logic. The implementations contain multiple functions or methods, conditional branches, 
+loops, string processing, constants, and structured data. These elements provide a known basis for assessing how accurately the analysis tools reconstruct 
+the original program structure and logic.
+
+The C implementation is compiled without optimization and without debug information. The resulting executable is additionally stripped, removing symbol 
+information that could reveal original function or variable names. Consequently, the native-code analysis tools must infer the program structure primarily 
+from the machine code. The Java and C\# implementations are compiled to their respective intermediate representations and analyzed using Bytecode Viewer and ILSpy.
+
+The complete source code of all three synthetic samples is provided in Appendix~\ref{app:an-appendix}.
+
+
+\subsection{Real Malware}
+\label{sec:methodology:dataset:real}
+In addition to the synthetic samples, a real-world malware sample from the WannaCry ransomware family is used in the evaluation. The selected sample is a 32-bit 
+Windows Portable Executable identified by the following SHA-256 hash:
+
+\begin{center}
+\texttt{24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c}
+\end{center}
+
+A native-code executable was selected because it can be examined by Ghidra, Binary Ninja, and Cutter. Consequently, the same sample can be analysed with three of the 
+evaluated tools, providing a broader basis for comparison than a Java bytecode or .NET sample. The specimen is not packed and contains numerous elements relevant to 
+static analysis, including imported functions, embedded strings, resources, function boundaries, and control-flow structures. Furthermore, WannaCry is extensively documented, 
+allowing observations made during the analysis to be compared with previously established information about the malware.
+
+The objective of the evaluation is not to reverse engineer the complete malware or provide a comprehensive account of its behaviour. Instead, the analysis concentrates on 
+selected and consistently observable elements, such as executable metadata, imports, strings, cross-references, identified functions, control-flow graphs, and the decompilation 
+of selected functions. This limited scope permits the output and usability of the three native-code analysis tools to be compared under equivalent conditions.
+
+The sample is examined exclusively through static analysis and is never intentionally executed. Its cryptographic hash is stated to identify the selected specimen unambiguously 
+without relying solely on its filename.
+
+
+\section{Evaluation Procedure}
+\label{sec:methodology:procedure}
+The evaluation follows a standardized procedure to ensure that the applicable tools are examined under comparable conditions. The native C sample is analysed using Ghidra, 
+Binary Ninja, and Cutter, while the Java and C\# samples are examined using Bytecode Viewer and ILSpy, respectively. The WannaCry sample is analysed with Ghidra, Binary Ninja, and Cutter. 
+Each tool receives the same applicable input file, and none of the samples are executed at any stage of the evaluation.
+
+For each tool, the relevant sample is imported and analysed using the default settings provided by the tool. If additional information, such as the target architecture or 
+file format, must be specified manually, the selected configuration is documented. The automatically generated results are examined before function names, variable names, 
+data types, or comments are modified manually. This ensures that the evaluation reflects the output initially produced by each tool rather than improvements introduced by the analyst.
+
+The examination concentrates on a consistent set of program elements. These include file-format recognition, detected functions or methods, imported functions and libraries, 
+embedded strings and constants, cross-references, control-flow representations, and decompiled output. For the synthetic samples, the reconstructed output is compared with the 
+corresponding original source code. This provides a known reference for assessing the preservation of program structure, control flow, and logic. The findings obtained from 
+the WannaCry sample are compared across the three native-code analysis tools and, where appropriate, with publicly documented information about the malware.
+
+Observations are recorded according to the evaluation criteria defined in Chapter~\ref{sec:evaluation}. Relevant screenshots are captured to illustrate the user interface, analysis workflow, 
+and representative differences in the generated output. The procedure is repeated for every applicable combination of tool and sample, allowing the results to be compared systematically.
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

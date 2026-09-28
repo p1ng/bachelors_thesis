@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\chapter{Evaluation Criteria}
+\label{sec:evaluation}
+This chapter defines the criteria used to evaluate the selected static analysis tools. The criteria cover both practical aspects, such as installation and usability, 
+and technical aspects, such as format support and the quality of the generated analysis output. Since the selected tools target different executable formats, 
+comparisons are performed both across the complete tool set and within the respective categories of native-code and managed-code analysis tools.
+
+\section{Installation and Setup}
+\label{sec:evaluation:installation}
+The installation process is evaluated from the perspective of a user who obtains the tools directly from their official sources. For this purpose, only precompiled binaries, 
+installation packages, or installers provided by the respective developers are used. The tools are neither compiled from source nor installed through the package repositories 
+of Debian or another Linux distribution.
+
+This approach avoids differences introduced by third-party package maintainers, such as outdated versions, distribution-specific modifications, or additional packaging decisions. 
+It also ensures that the evaluated installation procedure corresponds as closely as possible to the method recommended or directly supported by each project. 
+Compiling the tools from source is excluded because the associated build requirements and potential compilation problems would evaluate the development process rather than the 
+installation experience intended for regular users.
+
+The evaluation considers the availability of suitable Linux packages, the number and complexity of the required installation steps, additional dependencies, necessary configuration, 
+and any problems encountered before the tool can be used for its first analysis. The source and version of each installed tool are recorded to make the evaluation reproducible.
+
+The latest stable version available at the time of the evaluation is selected for each tool, while nightly builds and other development versions are excluded. 
+Unless required for basic operation, the tools are evaluated using their default configuration and without optional plugins or extensions. Account creation, 
+licence activation, and first-start configuration are considered part of the setup process. Installation is regarded as complete once the application can be started successfully 
+and an appropriate test file can be imported for analysis.
+
+\section{User Interface and Analysis Workflow}
+\label{sec:evaluation:uiux}
+The user interface and analysis workflow are evaluated by performing a set of common static analysis tasks in each applicable tool. These tasks include importing a file, 
+initiating the analysis, locating functions and strings, following cross-references, and navigating between related parts of the program. Where supported, 
+the accessibility of disassembly, decompilation, and graphical control-flow representations is also considered.
+
+The evaluation further examines how clearly the tools present the available information and how easily the analyst can move between different views. Basic interaction features, 
+such as renaming functions and variables or adding comments, are considered where they form part of the intended workflow. Particular attention is given to whether important functionality 
+is readily discoverable or requires prior knowledge of the tool.
+
+Since usability cannot be measured entirely objectively, all tools are evaluated by the same "analyst" using comparable tasks. The assessment is therefore based on the consistency and 
+practicality of the workflow rather than on personal preferences concerning visual appearance.
+
+\section{Supported File Formats and Architectures}
+\label{sec:evaluation:fileFormats}
+The supported file formats and processor architectures are determined from the official documentation of each tool (if there is any). For the formats represented in the test dataset, 
+support is additionally verified by importing and analyzing the corresponding files. This distinction separates officially stated capabilities from those confirmed during the 
+practical evaluation. The comparison focuses on formats relevant to this work, particularly native executables, .NET assemblies, and Java bytecode.
+
+\section{Quality of Analysis Output}
+\label{sec:evaluation:output}
+The quality of the generated analysis output is evaluated with regard to both correctness and readability. Relevant aspects include the identification of functions and function calls, 
+the reconstruction of control flow, the representation of variables and data types, and the preservation of the original program logic. Incorrectly identified code, missing information, 
+and output that could mislead the analyst are also considered.
+
+For the synthetic samples, the generated disassembly and decompiled code are compared with the corresponding source code. This provides a known reference against which the reconstructed 
+program logic can be examined. Since the original source code of the malware samples is not available, their output is instead assessed according to whether it supports the 
+identification and understanding of relevant program behaviour.
+
+Because native machine code, .NET assemblies, and Java bytecode contain different amounts and forms of recoverable information, output quality is primarily compared between tools that 
+analyze the same type of program. Screenshots and selected code excerpts are used in the practical evaluation to illustrate significant differences between the tools.
+
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

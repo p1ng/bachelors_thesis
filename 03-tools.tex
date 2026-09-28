@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\cleardoubleoddpage%  Make sure to start each chapter on a new odd page
+\chapter{Tools under Investigation}
+\label{sec:tools}
+
+
+\section{Selection Criteria}
+\label{sec:tools:criteria}
+
+A big consideration of the tool selection was the availability and accessibility of the tools themselves. Programs like IDA Pro were excluded for the financial hurdle that they present. 
+Preference was given to tools that are readily obtainable and usable in a standard analysis environment.
+
+Static analysis tools that are used for managed code programs were also selected, simply because malware is not only written in languages that compile to machine code. 
+This ensures that different types of compiled programs, including those targeting virtual machines such as the Java Virtual Machine or the .NET runtime, are represented in the evaluation.
+
+The selected tools are widely used within the reverse engineering community. Established tools with active user bases and ongoing development were preferred, 
+as they are more likely to be encountered in real world analysis scenarios.
+
+Finally, the tools were selected based on their suitability for static analysis tasks. Each tool provides functionality for disassembly, decompilation, or both, 
+and supports workflows relevant to malware analysis. Together, these criteria ensure that the selected tools provide a balanced and practical foundation 
+for the comparative evaluation conducted in this thesis.
+
+\section{Ghidra}
+\label{sec:tools:ghidra}
+Ghidra is, not just a tool, but a reverse engineering framework, developed and publicly released by the National Security Agency (NSA) in 2019 to support 
+cybersecurity professionals, researchers, and educators. According to the NSA, the tool was designed to address complex software analysis challenges by providing a 
+comprehensive suite of capabilities including disassembly, decompilation, debugging, and collaborative reverse engineering across multiple platforms. 
+Its public release aimed to strengthen cybersecurity education, improve accessibility to advanced reverse engineering tools, and support malware analysis and vulnerability research. 
+By making Ghidra freely available, the NSA positioned it as a significant resource for both professional analysts and academic environments.
+Also, in their own words, they were trying to "level the playing field" for beginner analysts. The agency itself profits from open sourcing the framework by being able 
+to hire new employees already familiar with a tool that they will actually then use in their work there. One could argue they also profit from additions and bugfixes from 
+the open source community, as the project itself has a public github page.
+\cite{bib:nsa-ghidra-release}
+
+\section{Binary Ninja}
+\label{sec:tools:binaryninja}
+Binary Ninja is a static reverse engineering platform developed by Vector 35, a US-based company specialising in reverse engineering tools. 
+The software originated from a private tool developed for use by a Capture the Flag (CTF) team. Vector 35 was subsequently founded to rebuild the tool as a commercial product 
+\cite{bib:binaryninja_faq}. The original Python prototype was released under the GNU General Public License version 2, but it does not share source code with the current implementation 
+\cite{bib:binaryninja_faq}.
+
+The current version of Binary Ninja is proprietary software, although several components of the platform are available as open-source projects. These include its public API, 
+debugger, and architecture definitions. Binary Ninja is offered in multiple editions, including a functionally restricted free edition and several paid editions intended for personal, 
+commercial, and enterprise use \cite{bib:binaryninja_faq}. The desktop application supports Linux, macOS, and Windows.
+
+
+\section{Cutter (Rizin GUI)}
+\label{sec:tools:cutter}
+Cutter is a free and open-source reverse engineering platform that provides a graphical user interface for the Rizin reverse engineering framework. 
+It is implemented in C++ using the Qt application framework and is available for Linux, macOS, and Windows \cite{bib:cutter}. Rizin serves as Cutter's core analysis engine, 
+while Cutter presents its functionality through a graphical and customizable user interface.
+
+The project aims to make the extensive functionality of Rizin more accessible without requiring users to interact exclusively with its command-line interface. Nevertheless, 
+Cutter also includes an integrated terminal through which Rizin commands can be executed directly. As both Cutter and Rizin are open-source projects, their source code can be inspected, 
+modified, and extended by the community.
+
+\section{Bytecode Viewer}
+\label{sec:tools:bytecode-viewer}
+Bytecode Viewer is a free and open-source Java and Android reverse-engineering suite released under the GNU General Public License version 3. It provides a graphical interface 
+for inspecting and decompiling compiled Java classes and archives. Files can be opened through the application or imported by drag and drop, and supported formats include individual 
+class files, JAR and WAR archives, as well as several Android formats \cite{bib:bytecode_viewer_github}.
+
+Rather than relying on a single decompilation engine, Bytecode Viewer integrates several Java decompilers, including CFR, Procyon, FernFlower, Krakatau, JADX, and JD-GUI. 
+It also provides bytecode disassemblers, search functionality, resource navigation, and configurable viewing panes that can display the output of up to three decompilers side 
+by side \cite{bib:bytecode_viewer_github}. For the practical evaluation in this thesis, FernFlower was selected as the decompilation engine and used consistently with its default configuration.
+
+Bytecode Viewer was included in this comparison to complement ILSpy with a tool designed for examining Java bytecode. Java applications and individual Java components may be 
+encountered during malware analysis, making support for class files and JAR archives relevant to static analysis. Its integration of several decompilation and inspection components 
+additionally distinguishes Bytecode Viewer from standalone decompilers that provide only reconstructed source code.
+
+\section{ILSpy}
+\label{sec:tools:ilspy}
+ILSpy is a free and open-source .NET assembly browser and decompiler developed as part of the ICSharpCode project. It is distributed under the MIT License and 
+provides a cross-platform desktop interface for Windows, Linux, and macOS \cite{bib:ilspy}. Its main purpose is the decompilation of .NET assemblies back into C\# source code. 
+In addition to individual classes and methods, ILSpy can decompile entire projects and provides functionality for searching and navigating types, methods, and properties, 
+as well as inspecting assembly metadata \cite{bib:ilspy}.
+
+ILSpy was included in this comparison because .NET and C\# are also relevant in malware analysis. Malware samples may be written entirely in C\#, while others contain individual 
+stages or components implemented as .NET assemblies. In such cases, a specialized .NET decompiler can provide significantly more useful high level output than a general purpose 
+native-code reverse engineering tool.
+
+
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

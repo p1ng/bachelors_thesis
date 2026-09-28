@@ -1,0 +1,114 @@
+gcc -std=c17 -Wall -Wextra -Wpedantic -O0 \
+    -o iban_validator iban_validator.c
+
+javac -g:none IbanValidator.java
+jar --create --file iban-validator.jar IbanValidator*.class
+
+dotnet new console --name IbanValidatorSample
+cp IbanValidator.cs IbanValidatorSample/Program.cs
+cd IbanValidatorSample
+
+dotnet build \
+    -c Release \
+    -p:Optimize=false \
+    -p:DebugType=None \
+    -p:DebugSymbols=false
+
+
+chapter 6:
+
+Tool: Ghidra
+Version: 12.1.2
+Official source and access date: https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.2_build ; 10.08.2026
+Downloaded file/package: https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.2_build/ghidra_12.1.2_PUBLIC_20260605.zip
+Installation steps: unzip the zip archive, run the runGhidra file, click agree to "Ghidra User Agreement", done
+Dependencies or prerequisites: java runtime (21 is adviced, 25 was installed on box previous (and kept))
+Administrative privileges required: no
+Problems encountered: none
+How the problems were resolved:
+Additional configuration:
+Successful launch: yes, immediatly
+Successful sample import: without problems. Create a project, drag and drop in a file, click analyze and leave all features enabled as is
+Time/effort required: next to none, in minutes
+Positive aspects: download, unzip, run, it cannot be simpler
+Negative or confusing aspects: java runtime needed
+Screenshot filenames: I will do that myself, thx
+Other observations: 
+
+Tool: Binary Ninja
+Version: 5.3.9757-Stable
+Official source and access date: https://binary.ninja/free/
+Downloaded file/package: https://cdn.binary.ninja/installers/binaryninja_free_linux.zip
+Installation steps: same as ghidra; download, unzip, run "binaryninja" binary
+Dependencies or prerequisites: none
+Administrative privileges required: no
+Problems encountered: none
+How the problems were resolved:
+Additional configuration: none
+Successful launch: yes, immediatly
+Successful sample import: yes, just open desired binary in file picker dialog
+Time/effort required: next to none, in minutes
+Positive aspects: same as ghidra, installation extremly easy
+Negative or confusing aspects: none
+Screenshot filenames:
+Other observations: started in dark mode, nice
+
+Tool: Cutter
+Version: 2.5.0
+Official source and access date: https://cutter.re/
+Downloaded file/package: https://github.com/rizinorg/cutter/releases/download/v2.5.0/Cutter-v2.5.0-Linux-x86_64.AppImage
+Installation steps: download, mark as executable, run the AppImage; insanely easy
+Dependencies or prerequisites: none
+Administrative privileges required: no
+Problems encountered: none
+How the problems were resolved:
+Additional configuration: none
+Successful launch: yes, immediatly
+Successful sample import: yes, simply choose file from file picker, slider for analysis level, very elegant
+Time/effort required: download is the longst part of installation, simply run the file
+Positive aspects: AppImage can be a blessing
+Negative or confusing aspects: AppImage will probably not come close to native speed (please correct me if wrong!)
+Screenshot filenames:
+Other observations: starting menu said lauch with theme of os, but started in light theme
+
+Tool: Bytecode viewer
+Version: 2.13.2
+Official source and access date: https://github.com/Konloch/bytecode-viewer/releases/tag/v2.13.2 ; 10.08.2026
+Downloaded file/package: https://github.com/Konloch/bytecode-viewer/releases/download/v2.13.2/Bytecode-Viewer-2.13.2.jar
+Installation steps: download jar, run jar
+Dependencies or prerequisites: java runtime
+Administrative privileges required: no
+Problems encountered: none
+How the problems were resolved:
+Additional configuration: none
+Successful launch: yes, immediatly
+Successful sample import: yes, drap and drop sample jar into drop point, very fast decompilation
+Time/effort required: quick, no effort
+Positive aspects: one of the few bytecode viewers that are still actively maintained (mention the JD-GUI disaster here)
+Negative or confusing aspects: none
+Screenshot filenames:
+Other observations: none
+
+Tool: ILSpy
+Version: 11.0.0
+Official source and access date: https://github.com/icsharpcode/ILSpy
+Downloaded file/package: https://github.com/icsharpcode/ILSpy/releases/download/v11.0-rc/ilspy_11.0.0.9335.rc-1_amd64.deb
+Installation steps: download deb, sudo apt install <filename>
+Dependencies or prerequisites:
+Administrative privileges required: yes, for apt
+Problems encountered: none
+How the problems were resolved:
+Additional configuration:none
+Successful launch: yes
+Successful sample import: yes, although the road to handling the ui was bumpy
+Time/effort required: little
+Positive aspects: deb package for Debian and derivates
+Negative or confusing aspects: none
+Screenshot filenames:
+Other observations: 
+
+
+Package: ilspy
+Version: 11.0.0.9335~rc-1
+Architecture: amd64
+Depends: libx11-6, libice6, libsm6, libfontconfig1, libicu | libicu78 | libicu77 | libicu76 | libicu74 | libicu72 | libicu71 | libicu70 | libicu69 | libicu68 | libicu67 | libicu66 | libicu65 | libicu63, xdg-utils
