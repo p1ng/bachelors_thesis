@@ -1,0 +1,5 @@
+git pull --rebase
+# work
+git add .
+git commit -m "Worked on static analysis chapter"
+git push
