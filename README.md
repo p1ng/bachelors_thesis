@@ -1,27 +1,49 @@
-# LaTeX Thesis and Technical Report Template for JKU Linz
+# Comparative Study and Demonstration of Static Code Analysis Tools
 
-This repository contains a template for (bachelor/master/PhD) theses and technical reports in LaTeX for [Johannes Kepler University Linz](https://www.jku.at/).
+Bachelor's thesis by **Paul Weber** at the Johannes Kepler University Linz (JKU), Austria.
 
+## Overview
 
-## RELEASES
+This thesis presents a practical comparison of static code analysis tools used in software reverse engineering and malware analysis.
 
-Find documentation and grab the latest version of the template [here](https://github.com/michaelroland/jku-templates-report-latex/releases/latest).
+The following tools are evaluated:
 
+- Ghidra
+- Binary Ninja
+- Cutter
+- ILSpy
+- Bytecode Viewer
 
-## LATEST VERSION AND BUG REPORTING
+The evaluation considers installation and configuration, usability, supported file formats, and the quality of analysis results.
 
-The official source code repository of the theme is <https://github.com/michaelroland/jku-templates-report-latex>.
-You can request features and report bugs through the [issue tracker](https://github.com/michaelroland/jku-templates-report-latex/issues).
+Practical experiments are conducted using self-developed sample programs and real-world malware samples.
 
+## Building
 
-## COPYRIGHT
+The thesis is written in LaTeX and uses the JKU thesis and technical report template.
 
-- Copyright (c) 2021-2025 Michael Roland <<michael.roland@ins.jku.at>>
+The main document is `main-thesis.tex`.
 
+Compilation requires a suitable LaTeX environment with XeLaTeX, Biber, and the necessary packages.
 
-## LICENSE
+## Attribution
 
-This Source Code Form is subject to the terms of the Mozilla Public License, version 2.0.
-If a copy of the MPL was not distributed with this file, you can obtain one here:
+This thesis uses the [JKU LaTeX Thesis and Technical Report Template](https://github.com/michaelroland/jku-templates-report-latex), developed by **Michael Roland**.
 
-**License**: [Mozilla Public License v2.0](https://mozilla.org/MPL/2.0/)
+The original template is distributed under the Mozilla Public License 2.0 (MPL-2.0).
+
+Copyright (c) 2021–2025 Michael Roland, for the original template components.
+
+Modifications to template files, if any, are subject to the applicable terms of the MPL-2.0.
+
+## Copyright and Licensing
+
+Copyright (c) 2026 Paul Weber, for the original thesis content.
+
+The academic text, original illustrations, and original analysis contained in this thesis are not licensed under the MPL-2.0 merely because the LaTeX template uses that license.
+
+Unless otherwise indicated, all rights to the original thesis content are reserved.
+
+The underlying JKU LaTeX template remains available under the Mozilla Public License 2.0. See [LICENSE](LICENSE).
+
+Third-party components and materials remain subject to their respective licenses and attribution requirements.
